@@ -15,4 +15,8 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+require("alpinejs")
+import tippy from "tippy.js"
+import "tippy.js/dist/tippy.css"
+window.tippy = tippy
 require("stylesheets/application.scss")

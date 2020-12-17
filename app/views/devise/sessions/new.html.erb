@@ -1,26 +1,57 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div class="">
+      <svg class="mx-auto h-12 w-auto h-6 text-indigo-600 fill-current" viewBox="0 0 194 116"
+           xmlns="http://www.w3.org/2000/svg">
+        <g fill-rule="evenodd">
+          <path
+            d="M96.869 0L30 116h104l-9.88-17.134H59.64l47.109-81.736zM0 116h19.831L77 17.135 67.088 0z" />
+          <path d="M87 68.732l9.926 17.143 29.893-51.59L174.15 116H194L126.817 0z" />
+        </g>
+      </svg>
+      <span class="ml-3 text-xl text-gray hidden">Gifs<span class="text-pink-500">.</span></span>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Sign in to your account
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Or
+        <a href="<%= url_for root_path %>" class="font-medium text-indigo-600 hover:text-indigo-500">
+          Browse gifs.
+        </a>
+      </p>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= form_for(resource, as: resource_name, :html => {class: "mt-8 space-y-6" }, url: session_path(resource_name)) do |f| %>
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <%= f.label :email, :class => "sr-only" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+        </div>
+        <div>
+          <%= f.label :password, :class => "sr-only" %><br />
+          <%= f.password_field :password, autocomplete: "current-password",
+                               :class => "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+        </div>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <%= f.check_box :remember_me, :class => "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" %>
+            <%= f.label :remember_me, :class => "ml-2 block text-sm text-gray-900" %>
+          </div>
+      <% end %>
+
+        <div class="text-sm">
+          <%= link_to "Forgot password?", new_password_path(resource_name), :class => "font-medium text-indigo-600 hover:text-indigo-500" %>
+          or
+          <%= link_to "Sign up", new_registration_path(resource_name), :class => "font-medium text-indigo-600 hover:text-indigo-500" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit "Sign in", :class => "cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
