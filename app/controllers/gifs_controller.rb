@@ -5,13 +5,20 @@ class GifsController < ApplicationController
   # GET /gifs
   # GET /gifs.json
   def index
-    @gifs = Gif.all
+    @gifs = Gif.includes(:tags, :user).sorted
   end
 
   # GET /gifs/1
   # GET /gifs/1.json
   def show
     @gif = Gif.find(params[:id])
+  end
+
+  def by_tag
+    @gifs = Gif.tagged_with(params[:tag]).random
+    @gifs ||= Gif.random
+
+    render :index
   end
 
   # GET /gifs/new

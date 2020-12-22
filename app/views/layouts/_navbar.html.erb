@@ -65,12 +65,9 @@
                    class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
               >
                 <div class="py-1 rounded-md bg-white shadow-xs">
-                  <a href="<%= url_for edit_user_registration_path %>"
-                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Profile</a>
-                  <a href="<%= url_for new_gif_path %>"
-                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Upload</a>
-                  <a href="<%= url_for destroy_user_session_path %>"
-                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
+                  <%= link_to edit_user_registration_path class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role: "menuitem" %>
+                  <%= link_to 'Upload', new_gif_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role: "menuitem" %>
+                  <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role: "menuitem" %>
                 </div>
               </div>
             </div>
@@ -81,11 +78,8 @@
 
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
-            <a href="<%= url_for new_user_registration_path %>"
-               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
-
-            <a href="<%= url_for new_user_session_path %>"
-               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign in</a>
+            <%= link_to 'Register', new_user_registration_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+            <%= link_to 'Sign in', new_user_session_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
           </div>
         </div>
 
@@ -125,26 +119,17 @@
           </div>
         </div>
         <div class="mt-3 px-2">
-          <a href="<%= url_for edit_user_registration_path %>"
-             class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Profile</a>
-          <a href="<%= url_for new_gif_path %>"
-             class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Upload</a>
-          <a href="<%= url_for destroy_user_session_path %>"
-             class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sign out</a>
+          <%= link_to 'Profile', edit_user_registration_path, class: "block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
+          <%= link_to 'Upload', new_gif_path, class: "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
+          <%= link_to destroy_user_session_path, class: "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
         </div>
       </div>
 
     <% else %>
       <div class="pt-1 pb-3 border-t border-gray-700">
         <div class="mt-3 px-2">
-          <a href="<%= url_for new_user_registration_path %>"
-             class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
-            Sign up
-          </a>
-          <a href="<%= url_for new_user_session_path %>"
-             class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
-            Sign in
-          </a>
+          <%= link_to 'Register', new_user_registration_path, class: "block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
+          <%= link_to 'Sign in', new_user_session_path, class: "mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700" %>
         </div>
       </div>
     <% end %>

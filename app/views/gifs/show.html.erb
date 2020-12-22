@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
-<%= image_tag @gif.image_url %>
+<div class="w-auto container mx-auto">
+  <p id="notice"><%= notice %></p>
+  <%= image_tag @gif.image_url, :class => "object-center" %>
 
-<p>Uploaded by:  <%= @gif.user.name %></p>
-<p>
-  <%= linked_tag_list @gif %>
-</p>
+  <div class="flex text-xs justify-content">
+    <div class="mr-2">Uploaded by:  <%= link_to @gif.user.name, @gif.user %></div>
+    <div class="">
+      <% if user_signed_in? && current_user.id == @gif.user_id %>
+        <%= link_to 'Edit', edit_gif_path(@gif), class: "mr-2" %>|
+        <%= link_to 'Destroy', @gif, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
 
-<% if user_signed_in? && current_user.id == @gif.user_id %>
-  <p>
-      <%= link_to 'Edit', edit_gif_path(@gif) %> |
-      <%= link_to 'Destroy', @gif, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-<% end %>
+  </div>
+  <div class="mb-1">
+    <%= linked_tag_list @gif %>
+  </div>
+
+  <div class="relative flex w-1/3 flex-wrap items-stretch mb-3">
+    <%= text_field_tag nil, @gif.image_url(host: root_url), id: "gif_url", :class => "px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full pr-10" %>
+    <span data-clipboard-target="#gif_url" data-tippy-content="Copy to clipboard"
+      class="btn cursor-pointer bg-gray-300 px-2 tooltip z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-16 right-0 pr-3 py-3">
+      Copy
+    </span>
+  </div>
+</div>
